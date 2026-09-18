@@ -8,286 +8,176 @@ import Portfolio from "@/components/Portfolio.vue";
 import Footer from "@/components/Footer.vue";
 import ContactMe from "@/components/ContactMe.vue";
 
-import { ref, onMounted } from "vue";
+import LuxuryBackground from "@/components/LuxuryBackground.vue";
+
+import { ref, onMounted, nextTick } from "vue";
 import AOS from "aos";
 
 const loading = ref(true);
 
 onMounted(() => {
-  AOS.init({});
   setTimeout(() => {
     loading.value = false;
-  }, 5000);
+    nextTick(() => {
+      AOS.init({
+        duration: 700,
+        easing: "ease-out-cubic",
+        once: true,
+        offset: 50,
+      });
+      AOS.refresh();
+    });
+  }, 1600);
 });
 </script>
 
 <template>
-  <main class="dark:bg-black main">
-    <div class="loader-wrapper" v-if="loading">
-      <div class="ui-abstergo">
-      <div class="abstergo-loader">
-        <div></div>
-        <div></div>
-        <div></div>
+  <main
+    class="min-h-screen bg-slate-50 dark:bg-[#07080c] text-slate-900 dark:text-slate-100 transition-colors duration-500 relative overflow-x-clip"
+  >
+    <!-- Luxury Subtle Glowing Connected Geometry Background -->
+    <LuxuryBackground />
+
+    <!-- Luxury Loading Overlay -->
+    <Transition name="loader-fade">
+      <div class="loader-overlay" v-if="loading">
+        <div class="ui-abstergo">
+          <div class="abstergo-loader">
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+          <div class="ui-brand">
+            <span
+              class="tracking-[0.3em] -mr-[0.3em] uppercase text-xs font-semibold text-emerald-500/90 dark:text-emerald-400/90 text-center"
+              >DAITIGN // ARCHITECTURE</span
+            >
+            <div class="ui-text">
+              <span>INITIALIZING</span>
+              <span class="ui-dots">
+                <span class="ui-dot"></span>
+                <span class="ui-dot"></span>
+                <span class="ui-dot"></span>
+              </span>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="ui-text">
-        Loading
-        <div class="ui-dot"></div>
-        <div class="ui-dot"></div>
-        <div class="ui-dot"></div>
-      </div>
-    </div>
-    </div>
-    <div
-      class="md:px-20 p-5 lg:px-5"
-      style="max-width: 1280px; margin: auto"
-      v-else
-    >
+    </Transition>
+
+    <!-- Main Content Flow -->
+    <div class="relative z-10 flex flex-col min-h-screen">
       <Header />
-      <Hero />
-      <Portfolio />
-      <AboutMe />
-      <Skills />
-      <Qualification />
-      <ContactMe />
+      <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex-1">
+        <section id="hero">
+          <Hero />
+        </section>
+
+        <section id="portfolio">
+          <Portfolio />
+        </section>
+
+        <section id="about">
+          <AboutMe />
+        </section>
+
+        <section id="skills">
+          <Skills />
+        </section>
+
+        <section id="qualification">
+          <Qualification />
+        </section>
+
+        <section id="contact">
+          <ContactMe />
+        </section>
+      </div>
+      <Footer />
     </div>
-    <Footer v-if="!loading" />
   </main>
 </template>
 
 <style lang="scss" scoped>
-.loader-wrapper {
-  height: 100vh;
+.loader-fade-leave-active {
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.loader-fade-leave-to {
+  opacity: 0;
+  transform: scale(1.02);
+}
+
+.loader-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  background: #07080c;
   display: flex;
   justify-content: center;
   align-items: center;
-
-  .loader {
-    --path: #2f3545;
-    --dot: #5628ee;
-    --duration: 3s;
-    width: 44px;
-    height: 44px;
-    position: relative;
-
-    &::before {
-      content: "";
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      position: absolute;
-      display: block;
-      background: var(--dot);
-      top: 37px;
-      left: 19px;
-      transform: translate(-18px, -18px);
-      animation: dotRect var(--duration) cubic-bezier(0.785, 0.135, 0.15, 0.86)
-        infinite;
-    }
-  }
 }
 
-.loader svg {
-  display: block;
-  width: 100%;
-  height: 100%;
-}
-
-.loader svg rect,
-.loader svg polygon,
-.loader svg circle {
-  fill: none;
-  stroke: var(--path);
-  stroke-width: 10px;
-  stroke-linejoin: round;
-  stroke-linecap: round;
-}
-
-.loader svg polygon {
-  stroke-dasharray: 145 76 145 76;
-  stroke-dashoffset: 0;
-  animation: pathTriangle var(--duration) cubic-bezier(0.785, 0.135, 0.15, 0.86)
-    infinite;
-}
-
-.loader svg rect {
-  stroke-dasharray: 192 64 192 64;
-  stroke-dashoffset: 0;
-  animation: pathRect 3s cubic-bezier(0.785, 0.135, 0.15, 0.86) infinite;
-}
-
-.loader svg circle {
-  stroke-dasharray: 150 50 150 50;
-  stroke-dashoffset: 75;
-  animation: pathCircle var(--duration) cubic-bezier(0.785, 0.135, 0.15, 0.86)
-    infinite;
-}
-
-.loader.triangle {
-  width: 48px;
-}
-
-.loader.triangle:before {
-  left: 21px;
-  transform: translate(-10px, -18px);
-  animation: dotTriangle var(--duration) cubic-bezier(0.785, 0.135, 0.15, 0.86)
-    infinite;
-}
-
-@keyframes pathTriangle {
-  33% {
-    stroke-dashoffset: 74;
-  }
-
-  66% {
-    stroke-dashoffset: 147;
-  }
-
-  100% {
-    stroke-dashoffset: 221;
-  }
-}
-
-@keyframes dotTriangle {
-  33% {
-    transform: translate(0, 0);
-  }
-
-  66% {
-    transform: translate(10px, -18px);
-  }
-
-  100% {
-    transform: translate(-10px, -18px);
-  }
-}
-
-@keyframes pathRect {
-  25% {
-    stroke-dashoffset: 64;
-  }
-
-  50% {
-    stroke-dashoffset: 128;
-  }
-
-  75% {
-    stroke-dashoffset: 192;
-  }
-
-  100% {
-    stroke-dashoffset: 256;
-  }
-}
-
-@keyframes dotRect {
-  25% {
-    transform: translate(0, 0);
-  }
-
-  50% {
-    transform: translate(18px, -18px);
-  }
-
-  75% {
-    transform: translate(0, -36px);
-  }
-
-  100% {
-    transform: translate(-18px, -18px);
-  }
-}
-
-@keyframes pathCircle {
-  25% {
-    stroke-dashoffset: 125;
-  }
-
-  50% {
-    stroke-dashoffset: 175;
-  }
-
-  75% {
-    stroke-dashoffset: 225;
-  }
-
-  100% {
-    stroke-dashoffset: 275;
-  }
-}
-
-.loader {
-  display: inline-block;
-  margin: 0 16px;
-}
 .ui-abstergo {
-  --primary: #111827;
-  --secondary: rgba(255, 255, 255, 0.3);
-  --shadow-blur: 3px;
-  --text-shadow-blur: 3px;
+  --primary: #10b981;
+  --secondary: rgba(16, 185, 129, 0.35);
+  --shadow-blur: 8px;
+  --text-shadow-blur: 5px;
   --animation-duration: 2s;
-  --size: 1;
-}
-
-.abstergo-loader * {
-  -webkit-box-sizing: content-box;
-  box-sizing: content-box;
-}
-
-.ui-abstergo {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -ms-flex-direction: column;
   flex-direction: column;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
-  row-gap: 30px;
-  scale: var(--size);
+  row-gap: 28px;
+}
+
+.ui-brand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
 }
 
 .ui-abstergo .ui-text {
-  color: var(--primary);
-  text-shadow: 0 0 var(--text-shadow-blur) var(--secondary);
-  font-family: Menlo, sans-serif;
-  display: -webkit-box;
-  display: -ms-flexbox;
+  color: #f1f5f9;
+  font-family: "Space Grotesk", "Plus Jakarta Sans", monospace;
+  font-size: 0.82rem;
+  letter-spacing: 0.22em;
+  margin-right: -0.22em;
   display: flex;
-  -webkit-box-align: baseline;
-  -ms-flex-align: baseline;
-  align-items: baseline;
-  -webkit-column-gap: 3px;
-  -moz-column-gap: 3px;
-  column-gap: 3px;
+  align-items: center;
+  column-gap: 5px;
+}
+
+.ui-dots {
+  display: inline-flex;
+  align-items: center;
+  gap: 3.5px;
+  margin-left: 2px;
 }
 
 .ui-abstergo .ui-dot {
-  content: "";
   display: block;
-  width: 3px;
-  height: 3px;
-  -webkit-animation: dots var(--animation-duration) infinite linear;
+  width: 3.5px;
+  height: 3.5px;
+  border-radius: 50%;
   animation: dots var(--animation-duration) infinite linear;
-  -webkit-animation-delay: .4s;
-  animation-delay: .4s;
   background-color: var(--primary);
 }
 
+.ui-abstergo .ui-dot:nth-child(1) {
+  animation-delay: 0.4s;
+}
+
 .ui-abstergo .ui-dot:nth-child(2) {
-  -webkit-animation-delay: .8s;
-  animation-delay: .8s;
+  animation-delay: 0.8s;
 }
 
 .ui-abstergo .ui-dot:nth-child(3) {
-  -webkit-animation-delay: 1.2s;
   animation-delay: 1.2s;
 }
 
-.ui-abstergo .ui-dot+.ui-dot {
-  margin-left: 3px;
+.abstergo-loader * {
+  box-sizing: content-box;
 }
 
 .abstergo-loader {
@@ -302,7 +192,6 @@ onMounted(() => {
   border-left: 12px solid transparent;
   border-top: 21px solid var(--primary);
   position: absolute;
-  -webkit-filter: drop-shadow(0 0 var(--shadow-blur) var(--secondary));
   filter: drop-shadow(0 0 var(--shadow-blur) var(--secondary));
 }
 
@@ -310,7 +199,6 @@ onMounted(() => {
   top: 27px;
   left: 7px;
   rotate: -60deg;
-  -webkit-animation: line1 var(--animation-duration) linear infinite alternate;
   animation: line1 var(--animation-duration) linear infinite alternate;
 }
 
@@ -318,7 +206,6 @@ onMounted(() => {
   bottom: 2px;
   left: 0;
   rotate: 180deg;
-  -webkit-animation: line2 var(--animation-duration) linear infinite alternate;
   animation: line2 var(--animation-duration) linear infinite alternate;
 }
 
@@ -326,42 +213,7 @@ onMounted(() => {
   bottom: 16px;
   right: -9px;
   rotate: 60deg;
-  -webkit-animation: line3 var(--animation-duration) linear infinite alternate;
   animation: line3 var(--animation-duration) linear infinite alternate;
-}
-
-.abstergo-loader:hover div:nth-child(1) {
-  top: 21px;
-  left: 14px;
-  rotate: 60deg;
-}
-
-.abstergo-loader:hover div:nth-child(2) {
-  bottom: 5px;
-  left: -8px;
-  rotate: 300deg;
-}
-
-.abstergo-loader:hover div:nth-child(3) {
-  bottom: 7px;
-  right: -11px;
-  rotate: 180deg;
-}
-
-@-webkit-keyframes line1 {
-  0%,
-  40% {
-    top: 27px;
-    left: 7px;
-    rotate: -60deg;
-  }
-
-  60%,
-  100% {
-    top: 22px;
-    left: 14px;
-    rotate: 60deg;
-  }
 }
 
 @keyframes line1 {
@@ -371,28 +223,11 @@ onMounted(() => {
     left: 7px;
     rotate: -60deg;
   }
-
   60%,
   100% {
     top: 22px;
     left: 14px;
     rotate: 60deg;
-  }
-}
-
-@-webkit-keyframes line2 {
-  0%,
-  40% {
-    bottom: 2px;
-    left: 0;
-    rotate: 180deg;
-  }
-
-  60%,
-  100% {
-    bottom: 5px;
-    left: -8px;
-    rotate: 300deg;
   }
 }
 
@@ -403,28 +238,11 @@ onMounted(() => {
     left: 0;
     rotate: 180deg;
   }
-
   60%,
   100% {
     bottom: 5px;
     left: -8px;
     rotate: 300deg;
-  }
-}
-
-@-webkit-keyframes line3 {
-  0%,
-  40% {
-    bottom: 16px;
-    right: -9px;
-    rotate: 60deg;
-  }
-
-  60%,
-  100% {
-    bottom: 7px;
-    right: -11px;
-    rotate: 180deg;
   }
 }
 
@@ -435,7 +253,6 @@ onMounted(() => {
     right: -9px;
     rotate: 60deg;
   }
-
   60%,
   100% {
     bottom: 7px;
@@ -444,31 +261,16 @@ onMounted(() => {
   }
 }
 
-@-webkit-keyframes dots {
-  0% {
-    background-color: var(--secondary);
-  }
-
-  30% {
-    background-color: var(--primary);
-  }
-
-  70%, 100% {
-    background-color: var(--secondary);
-  }
-}
-
 @keyframes dots {
   0% {
-    background-color: var(--secondary);
+    opacity: 0.3;
   }
-
   30% {
-    background-color: var(--primary);
+    opacity: 1;
   }
-
-  70%, 100% {
-    background-color: var(--secondary);
+  70%,
+  100% {
+    opacity: 0.3;
   }
 }
 </style>

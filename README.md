@@ -1,7 +1,7 @@
 # Hi this is my Portfolio
 
 ## CHECK THE LINK HERE 
-https://daitign.github.io/synt.pro/
+https://daitign.github.io/portfolio/
 
 ## Project Setup
 

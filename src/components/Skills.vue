@@ -1,341 +1,240 @@
 <template>
-  <div class="max-w-7xl m-center pt-48">
+  <div class="max-w-7xl mx-auto py-16 sm:py-24">
+    <!-- Luxury Header -->
     <div
-      class="skills text-center mt-10"
+      class="text-center pb-12 sm:pb-16"
       data-aos="fade-up"
       data-aos-delay="100"
-      data-aos-duration="800"
+      data-aos-duration="700"
     >
-      <h2 class="text-5xl dark:text-white">Skills</h2>
-      <span class="f-gray text-sm dark:text-white">Innovate, Implement, Inspire</span>
+      <div
+        class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-emerald-500/20 bg-emerald-500/5 text-emerald-600 dark:text-emerald-400 text-xs font-semibold tracking-widest uppercase mb-3"
+      >
+        <span>✦ Technical & Creative Ecosystem</span>
+      </div>
+      <h2
+        class="text-3xl sm:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight mb-3"
+      >
+        Capabilities & Tooling
+      </h2>
+      <p
+        class="text-sm sm:text-base text-slate-500 dark:text-slate-400 max-w-xl mx-auto font-normal"
+      >
+        From brand identity and cinematic video post-production to full-stack
+        web platforms and cloud deployments.
+      </p>
     </div>
-    <div class="skill-details flex mt-20 flex-col lg:flex-row lg:gap-10">
+
+    <!-- 3 Luxury Pillars Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+      <!-- Pillar 1: Creative Direction & Visual Design -->
       <div
-        data-aos="fade-down"
-        data-aos-duration="1000"
-        data-aos-delay="200"
-        class="lg:w-1/3 md:w-96 md:m-auto md:mb-16 card bg-white drop-shadow-2xl dark:bg-slate-800"
+        class="luxury-card p-6 sm:p-8 flex flex-col justify-between"
+        data-aos="fade-up"
+        data-aos-delay="150"
+        data-aos-duration="700"
       >
-        <h2 class="pt-7 pl-5 flex items-center">
-          <font-awesome-icon
-            class="fa-2xl pr-3 f-blue w-20"
-            :icon="['fas', 'fa-drafting-compass']"
-          />
-          <div class="flex flex-col">
-            <h2 class="text-xl dark:text-white">Graphic Designer</h2>
-            <span class="text-sm f-gray dark:text-white"
-              >Acquired Skills About</span
+        <div>
+          <!-- Card Header -->
+          <div
+            class="flex items-center gap-4 pb-6 border-b border-slate-200/70 dark:border-white/[0.08]"
+          >
+            <div
+              class="w-12 h-12 rounded-2xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 flex items-center justify-center text-xl shadow-inner border border-emerald-500/20"
             >
-          </div>
-        </h2>
-        <div
-          class="description grid grid-cols-4 gap-4 m-auto lg:px-10 px-5 pt-10"
-        >
-          <!-- <div class="p-1 card-mini">
-            <img
-              src="https://seeklogo.com/images/V/vuejs-logo-17D586B587-seeklogo.com.png"
-              class="h-14"
-              alt="VUEJS"
-            />
-            <span class="dark:text-white">VueJs</span>
-          </div>
-          <div class="p-1 card-mini">
-            <img
-              src="https://www.logo.wine/a/logo/React_(web_framework)/React_(web_framework)-Logo.wine.svg"
-              class="h-14"
-              alt="ReactJs"
-            />
-            <span class="dark:text-white">ReactJs</span>
-          </div>
-          <div class="p-1 card-mini">
-            <img
-              src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/JavaScript-logo.png/600px-JavaScript-logo.png?20120221235433"
-              class="h-14"
-              alt="JavaScript"
-            />
-            <span class="dark:text-white">JavaScript</span>
-          </div>
-          <div class="p-1 card-mini">
-            <img
-              src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Typescript_logo_2020.svg/512px-Typescript_logo_2020.svg.png?20210506173343"
-              class="h-14"
-              alt="TypeScript"
-            />
-            <span class="dark:text-white">TypeScript</span>
-          </div>
-          <div class="p-1 card-mini">
-            <img
-              src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Nuxt_logo.svg/512px-Nuxt_logo.svg.png?20201218211241"
-              class="h-14"
-              alt="NuxtJs"
-            />
-            <span class="dark:text-white">NuxtJs</span>
-          </div>
-          <div class="p-1 card-mini">
-            <img
-              src="https://mui.com/static/logo.png"
-              class="h-14"
-              alt="MaterialUI"
-            />
-            <span class="dark:text-white">MaterialUI</span>
-          </div> -->
-
-
-
-
-          <div class="p-1 card-mini">
-            <img
-              src="https://cdn.icon-icons.com/icons2/3053/PNG/512/adobe_photoshop_macos_bigsur_icon_190436.png"
-              class="h-14"
-              alt="Photoshop"
-            />
-            <span class="dark:text-white">Photoshop</span>
-          </div>
-          <div class="p-1 card-mini">
-            <img
-              src="https://cdn.icon-icons.com/icons2/3070/PNG/512/adobe_indesign_software_computer_app_design_software_icon_191061.png"
-              class="h-14"
-              alt="Word"
-            />
-            <span class="dark:text-white">Indesign</span>
-          </div>
-          <div class="p-1 card-mini">
-            <img
-              src="https://cdn.icon-icons.com/icons2/3053/PNG/512/adobe_lightroom_macos_bigsur_icon_190441.png"
-              class="h-14"
-              alt="Figma"
-            />
-            <span class="dark:text-white">Lightroom</span>
-          </div>
-          <div class="p-1 card-mini">
-            <img
-              src="https://cdn.icon-icons.com/icons2/3070/PNG/512/adobe_illustrator_software_design_graphic_vector_multimedia_icon_191051.png"
-              class="h-14"
-              alt="Webflow"
-            />
-            <span class="dark:text-white">Illustrator</span>
-          </div>
-          <div class="p-1 card-mini">
-            <img
-              src="https://cdn.icon-icons.com/icons2/2699/PNG/512/canva_logo_icon_168460.png"
-              class="h-14"
-              alt="SEO"
-            />
-            <span class="dark:text-white">Canva</span>
-          </div>
-          <div class="p-1 card-mini">
-            <img
-              src="https://cdn.icon-icons.com/icons2/2699/PNG/512/figma_logo_icon_170157.png"
-              class="h-14"
-              alt="Cisco"
-            />
-            <span class="dark:text-white">Figma</span>
-          </div>
-          <div class="p-1 card-mini">
-            <img
-              src="https://cdn.icon-icons.com/icons2/3053/PNG/512/adobe_premiere_pro_macos_bigsur_icon_189485.png"
-              class="h-14"
-              alt="Vegas"
-            />
-            <span class="dark:text-white">Premiere</span>
-          </div>
-          <div class="p-1 card-mini">
-            <img
-              src="https://cdn.icon-icons.com/icons2/195/PNG/256/Google_Sketchup_23504.png"
-              class="h-14"
-              alt="Vegas"
-            />
-            <span class="dark:text-white">SketchUp</span>
-          </div>
-          
-          <div class="p-1 card-mini">
-            <img
-              src="https://seeklogo.com/images/C/corel-draw-2020-logo-270FEE465B-seeklogo.com.png"
-              class="h-14"
-              alt="Vegas"
-            />
-            <span class="dark:text-white">CorelDRAW</span>
+              <font-awesome-icon :icon="['fas', 'photo-film']" />
+            </div>
+            <div>
+              <h3 class="text-lg font-bold text-slate-900 dark:text-white">
+                Creative Direction
+              </h3>
+              <span
+                class="text-xs uppercase tracking-wider font-semibold text-slate-400"
+                >Graphic Design & Video Editing</span
+              >
+            </div>
           </div>
 
+          <!-- Description -->
+          <p
+            class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 py-4 leading-relaxed font-normal"
+          >
+            Brand identity design, cinematic video editing, motion graphics, and
+            high-impact digital content creation.
+          </p>
 
-
-
-
-
-
-          
+          <!-- Skill Badges Grid -->
+          <div class="grid grid-cols-3 gap-2.5 pt-2">
+            <div
+              v-for="(tool, idx) in creativeTools"
+              :key="tool.name"
+              class="flex flex-col items-center justify-center p-2.5 rounded-xl bg-slate-50 dark:bg-white/[0.03] border border-slate-200/80 dark:border-white/[0.06] hover:border-emerald-400/40 hover:scale-105 transition-all duration-300 group"
+              :class="{ 'col-start-2': idx === 6 }"
+            >
+              <div
+                class="w-7 h-7 sm:w-8 sm:h-8 mb-1.5 flex items-center justify-center"
+              >
+                <TechIcon :name="tool.icon" class="w-full h-full" />
+              </div>
+              <span
+                class="text-[11px] font-semibold text-slate-700 dark:text-slate-300 group-hover:text-emerald-500 dark:group-hover:text-emerald-400 transition-colors text-center leading-tight"
+              >
+                {{ tool.name }}
+              </span>
+            </div>
+          </div>
         </div>
       </div>
 
-
-
-      
+      <!-- Pillar 2: Backend Architecture & Cloud -->
       <div
-        data-aos="fade-down"
-        data-aos-duration="1000"
-        data-aos-delay="400"
-        class="lg:w-1/3 md:w-96 md:m-auto md:mb-16 card bg-white drop-shadow-2xl dark:bg-slate-800"
+        class="luxury-card p-6 sm:p-8 flex flex-col justify-between"
+        data-aos="fade-up"
+        data-aos-delay="300"
+        data-aos-duration="700"
       >
-        <h2 class="pt-7 pl-5 flex items-center">
-          <font-awesome-icon
-            class="fa-2xl pr-3 f-blue w-20"
-            :icon="['fas', 'code-branch']"
-          />
-          <div class="flex flex-col">
-            <h2 class="text-xl dark:text-white">Backend Developer</h2>
-            <span class="text-sm f-gray dark:text-white"
-              >Acquired Skills About</span
+        <div>
+          <!-- Card Header -->
+          <div
+            class="flex items-center gap-4 pb-6 border-b border-slate-200/70 dark:border-white/[0.08]"
+          >
+            <div
+              class="w-12 h-12 rounded-2xl bg-blue-500/10 text-blue-500 flex items-center justify-center text-xl shadow-inner border border-blue-500/20"
             >
+              <font-awesome-icon :icon="['fas', 'server']" />
+            </div>
+            <div>
+              <h3 class="text-lg font-bold text-slate-900 dark:text-white">
+                Backend Engineering
+              </h3>
+              <span
+                class="text-xs uppercase tracking-wider font-semibold text-slate-400"
+                >Architecture & Data</span
+              >
+            </div>
           </div>
-        </h2>
-        <div
-          class="description grid grid-cols-4 gap-4 m-auto lg:px-10 px-5 pt-10"
-        >
-          <div class="p-1 card-mini">
-            <img
-              src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Laravel.svg/121px-Laravel.svg.png"
-              class="h-14"
-              alt="Laravel"
-            />
-            <span class="dark:text-white">Laravel</span>
+
+          <!-- Description -->
+          <p
+            class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 py-4 leading-relaxed font-normal"
+          >
+            Robust RESTful API development, relational database modeling with
+            MySQL, secure authentication, and cloud server deployment.
+          </p>
+
+          <!-- Skill Badges Grid -->
+          <div class="grid grid-cols-3 gap-2.5 pt-2">
+            <div
+              v-for="tool in backendTools"
+              :key="tool.name"
+              class="flex flex-col items-center justify-center p-2.5 rounded-xl bg-slate-50 dark:bg-white/[0.03] border border-slate-200/80 dark:border-white/[0.06] hover:border-blue-400/40 hover:scale-105 transition-all duration-300 group"
+            >
+              <div
+                class="w-7 h-7 sm:w-8 sm:h-8 mb-1.5 flex items-center justify-center"
+              >
+                <TechIcon :name="tool.icon" class="w-full h-full" />
+              </div>
+              <span
+                class="text-[11px] font-semibold text-slate-700 dark:text-slate-300 group-hover:text-blue-500 dark:group-hover:text-blue-400 transition-colors text-center"
+              >
+                {{ tool.name }}
+              </span>
+            </div>
           </div>
-          <div class="p-1 card-mini">
-            <img
-              src="https://cdn.icon-icons.com/icons2/2108/PNG/512/php_icon_130857.png"
-              class="h-14"
-              alt="PHP"
-            />
-            <span class="dark:text-white">PHP</span>
-          </div>
-          <div class="p-1 card-mini">
-            <img
-              src="https://pngimg.com/uploads/mysql/mysql_PNG9.png"
-              class="h-14"
-              alt="Mysql"
-            />
-            <span class="dark:text-white">Mysql</span>
-          </div>
-          <div class="p-1 card-mini">
-            <img
-              src="https://cdn3.iconfinder.com/data/icons/social-media-2169/24/social_media_social_media_logo_codeigniter-512.png"
-              class="h-14"
-              alt="CodeIgniter"
-            />
-            <span class="dark:text-white">CodeIgniter</span>
-          </div>
-          <div class="p-1 card-mini">
-            <img
-              src="https://cdn.icon-icons.com/icons2/2407/PNG/512/aws_icon_146237.png"
-              class="h-14"
-              alt="CodeIgniter"
-            />
-            <span class="dark:text-white">AWS</span>
-          </div>
-          
-          
-          <!-- <div class="p-1 card-mini">
-            <img
-              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRK_A4ygFZawvqLFvYUYfssFpgwAfCGZ7Xs_Ka4hDnmgA&s"
-              class="h-14"
-              alt="AWS"
-            />
-            <span class="dark:text-white">AWS</span>
-          </div>
-          <div class="p-1 card-mini">
-            <img
-              src="https://seeklogo.com/images/D/docker-logo-CF97D0124B-seeklogo.com.png"
-              class="h-14"
-              alt="Docker"
-            />
-            <span class="dark:text-white">Docker</span>
-          </div>
-          <div class="p-1 card-mini">
-            <img
-              src="https://cms-assets.tutsplus.com/uploads/users/433/posts/23928/preview_image/Untitled.png"
-              class="h-14"
-              alt="Laravel Lumen"
-            />
-            <span class="dark:text-white">Laravel Lumen</span>
-          </div>
-          <div class="p-1 card-mini">
-            <img
-              src="https://cdn3.iconfinder.com/data/icons/social-media-2169/24/social_media_social_media_logo_codeigniter-512.png"
-              class="h-14"
-              alt="CodeIgniter"
-            />
-            <span class="dark:text-white">CodeIgniter</span>
-          </div> -->
         </div>
       </div>
+
+      <!-- Pillar 3: Frontend & Interactive Systems -->
       <div
-        data-aos="fade-down"
-        data-aos-duration="1000"
-        data-aos-delay="600"
-        class="lg:w-1/3 md:w-96 md:m-auto md:mb-16 card bg-white drop-shadow-2xl dark:bg-slate-800"
+        class="luxury-card p-6 sm:p-8 flex flex-col justify-between md:col-span-2 lg:col-span-1"
+        data-aos="fade-up"
+        data-aos-delay="450"
+        data-aos-duration="700"
       >
-        <h2 class="pt-7 pl-5 flex items-center">
-          <font-awesome-icon
-            class="fa-2xl pr-3 f-blue w-20"
-            :icon="['fas', 'code']"
-          />
-          <div class="flex flex-col">
-            <h2 class="text-xl dark:text-white">Frontend Developer</h2>
-            <span class="text-sm f-gray dark:text-white">Acquired Skills About</span>
+        <div>
+          <!-- Card Header -->
+          <div
+            class="flex items-center gap-4 pb-6 border-b border-slate-200/70 dark:border-white/[0.08]"
+          >
+            <div
+              class="w-12 h-12 rounded-2xl bg-indigo-500/10 text-indigo-500 flex items-center justify-center text-xl shadow-inner border border-indigo-500/20"
+            >
+              <font-awesome-icon :icon="['fas', 'code']" />
+            </div>
+            <div>
+              <h3 class="text-lg font-bold text-slate-900 dark:text-white">
+                Frontend Architecture
+              </h3>
+              <span
+                class="text-xs uppercase tracking-wider font-semibold text-slate-400"
+                >Interactive Systems</span
+              >
+            </div>
           </div>
-        </h2>
-        <div
-          class="description grid grid-cols-4 gap-4 m-auto lg:px-10 px-5 pt-10"
-        >
-        <div class="p-1 card-mini">
-            <img
-              src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Tailwind_CSS_Logo.svg/600px-Tailwind_CSS_Logo.svg.png?20211001194333"
-              class="h-14"
-              alt="Tailwind"
-            />
-            <span class="dark:text-white">Tailwind</span>
-          </div>
-          <div class="p-1 card-mini">
-            <img
-              src="https://seeklogo.com/images/B/bootstrap-logo-3C30FB2A16-seeklogo.com.png"
-              class="h-14"
-              alt="Bootstrap"
-            />
-            <span class="dark:text-white">Bootstrap</span>
-          </div>
-          <div class="p-1 card-mini">
-            <img
-              src="https://cdn.icon-icons.com/icons2/2415/PNG/512/react_original_logo_icon_146374.png"
-              class="h-14"
-              alt="Bootstrap"
-            />
-            <span class="dark:text-white">ReactJS</span>
-          </div>
-          <div class="p-1 card-mini">
-            <img
-              src="https://cdn.icon-icons.com/icons2/2108/PNG/512/javascript_icon_130900.png"
-              class="h-14"
-              alt="Mysql"
-            />
-            <span class="dark:text-white">JavaScript</span>
-          </div>
-          <div class="p-1 card-mini">
-            <img
-              src="https://cdn.icon-icons.com/icons2/2107/PNG/512/file_type_html_icon_130541.png"
-              alt="HTML5"
-              class="h-14"
-            />
-            <span class="dark:text-white">HTML5</span>
-          </div>
-          <div class="p-1 card-mini">
-            <img
-              src="https://cdn.icon-icons.com/icons2/2107/PNG/512/file_type_css_icon_130661.png"
-              class="h-14"
-              alt="CSS"
-            />
-            <span class="dark:text-white">CSS</span>
+
+          <!-- Description -->
+          <p
+            class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 py-4 leading-relaxed font-normal"
+          >
+            Responsive web applications, component-driven UI architecture, fluid
+            interactive interfaces, and cross-device design systems.
+          </p>
+
+          <!-- Skill Badges Grid -->
+          <div class="grid grid-cols-3 gap-2.5 pt-2">
+            <div
+              v-for="tool in frontendTools"
+              :key="tool.name"
+              class="flex flex-col items-center justify-center p-2.5 rounded-xl bg-slate-50 dark:bg-white/[0.03] border border-slate-200/80 dark:border-white/[0.06] hover:border-indigo-400/40 hover:scale-105 transition-all duration-300 group"
+            >
+              <div
+                class="w-7 h-7 sm:w-8 sm:h-8 mb-1.5 flex items-center justify-center"
+              >
+                <TechIcon :name="tool.icon" class="w-full h-full" />
+              </div>
+              <span
+                class="text-[11px] font-semibold text-slate-700 dark:text-slate-300 group-hover:text-indigo-500 dark:group-hover:text-indigo-400 transition-colors text-center"
+              >
+                {{ tool.name }}
+              </span>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
 </template>
+
+<script setup lang="ts">
+import TechIcon from "@/components/TechIcon.vue";
+
+const creativeTools = [
+  { name: "Photoshop", icon: "photoshop" },
+  { name: "Illustrator", icon: "illustrator" },
+  { name: "Canva", icon: "canva" },
+  { name: "Premiere", icon: "premiere" },
+  { name: "After Effects", icon: "aftereffects" },
+  { name: "DaVinci Resolve", icon: "davinci" },
+  { name: "CapCut", icon: "capcut" },
+];
+
+const backendTools = [
+  { name: "Laravel", icon: "laravel" },
+  { name: "PHP", icon: "php" },
+  { name: "MySQL", icon: "mysql" },
+  { name: "CodeIgniter", icon: "codeigniter" },
+  { name: "AWS Cloud", icon: "aws" },
+  { name: "REST APIs", icon: "code" },
+];
+
+const frontendTools = [
+  { name: "Vue.js", icon: "vue" },
+  { name: "React", icon: "react" },
+  { name: "Tailwind", icon: "tailwind" },
+  { name: "JavaScript", icon: "javascript" },
+  { name: "HTML5", icon: "html5" },
+  { name: "CSS3", icon: "css3" },
+];
+</script>
+
+<style scoped></style>

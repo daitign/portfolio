@@ -1,84 +1,190 @@
 <template>
-  <div class="max-w-7xl m-center pt-20 pb-15">
+  <div class="max-w-7xl mx-auto py-16 sm:py-24">
+    <!-- Luxury Header -->
     <div
-      class="about-me text-center mt-10 md:mt-32"
+      class="text-center pb-12 sm:pb-16"
       data-aos="fade-up"
       data-aos-delay="100"
-      data-aos-duration="800"
+      data-aos-duration="700"
     >
-      <h2 class="text-5xl dark:text-white">About Me</h2>
-      <span class="f-gray text-sm dark:text-white">Personal</span>
+      <div
+        class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-emerald-500/20 bg-emerald-500/5 text-emerald-600 dark:text-emerald-400 text-xs font-semibold tracking-widest uppercase mb-3"
+      >
+        <span>✦ Biography & Vision</span>
+      </div>
+      <h2
+        class="text-3xl sm:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight mb-3"
+      >
+        Cinematic Direction & Digital Craft
+      </h2>
+      <p
+        class="text-sm sm:text-base text-slate-500 dark:text-slate-400 max-w-xl mx-auto font-normal"
+      >
+        The convergence of cinematic video editing, visual design, and modern
+        web development.
+      </p>
     </div>
-    <div
-      class="details flex mt-20 md:flex-col-reverse lg:flex-row flex-col-reverse"
-    >
-      <div
-        class="image lg:w-3/6 mt-12 lg:m-auto"
-        data-aos="fade-right"
-        data-aos-delay="500"
-        data-aos-duration="500"
-      >
-        <img
-          class="w-11/12 rounded-md drop-shadow-lg m-auto lg:m-0"
-          src="/src/assets/img/q6KQv6F.png"
-          alt=""
-        />
-      </div>
-      <div
-        class="information lg:w-3/6 flex flex-col"
-        data-aos="fade-right"
-        data-aos-delay="1200"
-        data-aos-duration="500"
-      >
-      <div
-        class="cover-letter f-gray text-lg pb-7 dark:text-white text-center lg:text-left md:justify-center lg:justify-start"
-        style="text-align: justify;"
-      >
-        I was fascinated by the workings of technology and decided to pursue a career in the IT industry.
-        I soon discovered that everything I encountered online resulted from meticulously crafted lines of code. 
-        Years later, I am pursuing my passion for IT by earning a bachelor's degree.
-      </div>
 
-        <div
-          class="summary-experience flex text-center justify-center lg:justify-start"
-        >
-          <div class="years-exp mr-5 w-2/12">
-            <h2 class="text-3xl f-dark-blue font-extrabold dark:text-blue-500">
-              02+
-            </h2>
-            <span class="text-sm f-gray dark:text-white">Years of Experience</span>
-          </div>
-          <div class="projects mr-5 w-2/12">
-            <h2 class="text-3xl f-dark-blue font-extrabold dark:text-blue-500">
-              9+
-            </h2>
-            <span class="text-sm f-gray dark:text-white"
-              >Completed projects</span
+    <!-- Editorial 2-Column Split: Horizontally Aligned Top & Bottom -->
+    <div
+      class="flex flex-col lg:flex-row lg:items-stretch justify-between gap-8 lg:gap-12"
+    >
+      <!-- Left: Cinematic Studio Landscape with Luxury Bezel Frame -->
+      <div
+        class="w-full lg:w-1/2 flex flex-col"
+        data-aos="fade-right"
+        data-aos-delay="200"
+        data-aos-duration="700"
+      >
+        <div class="relative group w-full h-full flex flex-col">
+          <!-- Subtle Glow Aura -->
+          <div
+            class="absolute -inset-2 rounded-3xl bg-gradient-to-tr from-emerald-500/20 via-teal-500/15 to-transparent blur-xl opacity-80 group-hover:opacity-100 transition-opacity"
+          ></div>
+
+          <div
+            class="relative rounded-2xl overflow-hidden border border-slate-200/80 dark:border-white/10 shadow-2xl bg-slate-900 w-full lg:h-full flex flex-col"
+          >
+            <div
+              class="relative w-full aspect-[16/10] sm:aspect-[16/9] lg:aspect-auto lg:h-full overflow-hidden"
             >
-          </div>
-          <div class="companies-worked mr-5 w-2/12">
-            <h2 class="text-3xl f-dark-blue font-extrabold dark:text-blue-500">
-              2+
-            </h2>
-            <span class="text-sm f-gray dark:text-white">Companies Worked</span>
+              <img
+                class="w-full h-full object-cover object-center filter grayscale-[10%] group-hover:grayscale-0 transition-all duration-500 group-hover:scale-105"
+                :src="jemarkStudioImg"
+                alt="Jemark Daite in editing studio workspace"
+                loading="lazy"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-80 pointer-events-none"
+              ></div>
+
+              <!-- Bottom Corner Pill Badge -->
+              <div
+                class="absolute bottom-3 left-3 sm:bottom-4 sm:left-4 p-2 sm:p-2.5 md:p-3 rounded-xl backdrop-blur-xl bg-[#0a100d]/85 border border-emerald-500/25 text-white flex items-center gap-2.5 sm:gap-3 shadow-[0_12px_32px_rgba(0,0,0,0.85),0_0_20px_rgba(16,185,129,0.18)] pointer-events-none max-w-[calc(100%-24px)]"
+              >
+                <div class="min-w-0">
+                  <div
+                    class="text-xs font-bold tracking-wide text-emerald-400 truncate"
+                  >
+                    Jemark Daite
+                  </div>
+                  <div
+                    class="text-[9px] sm:text-[10px] text-slate-300 uppercase tracking-wider truncate"
+                  >
+                    Davao, Philippines • Worldwide
+                  </div>
+                </div>
+                <div
+                  class="w-6 h-6 sm:w-7 sm:h-7 rounded-lg bg-white/10 flex items-center justify-center text-emerald-400 text-[10px] sm:text-xs shrink-0"
+                >
+                  <font-awesome-icon :icon="['fas', 'location-dot']" />
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="resume pt-10">
-          <button class="btn-accent flex items-center m-auto lg:m-0">
-            <a
-              href="https://drive.google.com/file/d/1woaT9Irs3xiLaUuEQqXKu2D37g9wYM40/view"
-              target="_blank"
+      </div>
+
+      <!-- Right: Narrative & Experience Metrics (Flush Top & Bottom with Image) -->
+      <div
+        class="w-full lg:w-1/2 flex flex-col justify-between text-left"
+        data-aos="fade-left"
+        data-aos-delay="300"
+        data-aos-duration="700"
+      >
+        <!-- Top: Balanced Executive Narrative (Video Editing & Web Development) -->
+        <div
+          class="space-y-2.5 text-slate-600 dark:text-slate-300 text-xs sm:text-sm leading-relaxed font-normal mb-5 lg:mb-0"
+        >
+          <p>
+            My creative journey is driven by visual storytelling where cinematic
+            pacing, color grading, and dynamic motion meet digital technology.
+            From cutting high retention video content to designing cohesive
+            brand identities, I transform ideas into compelling visual
+            experiences.
+          </p>
+          <p>
+            Holding a BSIT degree, pursuing Master's studies in IT, and backed
+            by over four years of industry experience, I operate seamlessly
+            across video editing and web development crafting broadcast-quality
+            video productions alongside responsive, scalable web platforms.
+          </p>
+        </div>
+
+        <!-- Middle: Compact & Refined 3-Column Metric Cards -->
+        <div
+          class="grid grid-cols-3 gap-2 sm:gap-3 w-full my-4 sm:my-5 lg:my-0"
+        >
+          <div
+            class="luxury-card py-2 px-1.5 sm:py-2.5 sm:px-3 text-center !rounded-xl sm:!rounded-2xl"
+          >
+            <div
+              class="text-lg sm:text-xl lg:text-2xl font-black text-slate-900 dark:text-white leading-none mb-1"
             >
-              Download Resume&nbsp;
-              <span><font-awesome-icon
-                  class="w-4"
-                  :icon="['fas', 'arrow-circle-down']"
-              />
-            </span>
-            </a>
+              04<span class="text-emerald-500 font-bold">+</span>
+            </div>
+            <div
+              class="text-[9px] sm:text-[10px] lg:text-[11px] font-semibold tracking-wider uppercase text-slate-500 dark:text-slate-400 leading-tight"
+            >
+              Years Experience
+            </div>
+          </div>
+
+          <div
+            class="luxury-card py-2 px-1.5 sm:py-2.5 sm:px-3 text-center !rounded-xl sm:!rounded-2xl"
+          >
+            <div
+              class="text-lg sm:text-xl lg:text-2xl font-black text-slate-900 dark:text-white leading-none mb-1"
+            >
+              132<span class="text-emerald-500 font-bold">+</span>
+            </div>
+            <div
+              class="text-[9px] sm:text-[10px] lg:text-[11px] font-semibold tracking-wider uppercase text-slate-500 dark:text-slate-400 leading-tight"
+            >
+              Shipped Projects
+            </div>
+          </div>
+
+          <div
+            class="luxury-card py-2 px-1.5 sm:py-2.5 sm:px-3 text-center !rounded-xl sm:!rounded-2xl"
+          >
+            <div
+              class="text-lg sm:text-xl lg:text-2xl font-black text-slate-900 dark:text-white leading-none mb-1"
+            >
+              04<span class="text-emerald-500 font-bold">+</span>
+            </div>
+            <div
+              class="text-[9px] sm:text-[10px] lg:text-[11px] font-semibold tracking-wider uppercase text-slate-500 dark:text-slate-400 leading-tight"
+            >
+              Companies Served
+            </div>
+          </div>
+        </div>
+
+        <!-- Bottom: Refined Action Button with Comfortable Breathing Room -->
+        <div class="pt-2 lg:pt-0 w-full sm:w-auto">
+          <button
+            type="button"
+            @click="openResume"
+            class="btn-luxury-emerald !py-2 sm:!py-2.5 !px-5 text-xs sm:text-sm font-semibold w-full sm:w-auto text-center cursor-pointer flex items-center justify-center gap-2 shadow-md hover:shadow-lg transition-all"
+          >
+            <span>Download Resume</span>
+            <font-awesome-icon
+              class="text-xs sm:text-sm"
+              :icon="['fas', 'circle-arrow-down']"
+            />
           </button>
         </div>
       </div>
     </div>
   </div>
 </template>
+
+<script setup lang="ts">
+import { useResumeModal } from "@/composables/useResumeModal";
+import jemarkStudioImg from "@/assets/img/jemark_studio.jpg";
+
+const { openResume } = useResumeModal();
+</script>
+
+<style scoped></style>

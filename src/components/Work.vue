@@ -1,44 +1,131 @@
 <template>
-  <div class="progress-journey flex justify-center mt-10 transition-all">
-    <ul class="journey-description flex flex-col w-96 text-right">
-      <li class="pr-10" data-aos="fade-right" data-aos-duration="500">
-        <h2 class="text-sm dark:text-white">Graphic Designer, Automation Email Marketing at Infocentrale</h2>
-        <span class="text-xs f-gray"> 09/2022 – 03/2024</span>
-      </li>
-      <li></li>
-      <!-- <li class="pr-10" data-aos="fade-right" data-aos-duration="500">
-        <h2 class="text-sm dark:text-white">Automation, Email Marketing at Infocentrale</h2>
-        <span class="text-xs f-gray"> 07/2023 – 09/2023</span>
-      </li> -->
-      <li></li>
-      <li class="pr-10" data-aos="fade-right" data-aos-duration="500">
-        <h2 class="text-sm dark:text-white">
-          Graphic Designer at BIG B
-        </h2>
-        <span class="text-xs f-gray"> 01/2020 – 11/2020</span>
-      </li>
-    </ul>
-    <ul class="journey flex flex-col w-12 lg:w-5 items-center">
-      <li></li>
-      <!-- <li></li> -->
-      <li></li>
-      <!-- <li></li> -->
-      <li></li>
-    </ul>
-    <ul class="journey-description flex flex-col w-96">
-      <li></li>
-      <li class="pl-10" data-aos="fade-left" data-aos-duration="500">
-        <h2 class="text-sm dark:text-white">Graphic Designer at ER Design</h2>
-        <span class="text-xs f-gray"> 05/2021 – 7/2022</span>
-      </li>
-      <li></li>
-      <!-- <li class="pl-10" data-aos="fade-left" data-aos-duration="500">
-        <h2 class="text-sm dark:text-white">
-          Software Engineer at Quickstrike Mfg
-        </h2>
-        <span class="text-xs f-gray"> 06/2019 – 01/2022</span>
-      </li> -->
-      <!-- <li></li> -->
-    </ul>
+  <div class="relative max-w-4xl mx-auto px-4 sm:px-6">
+    <!-- Center Line for Desktop / Left Line for Mobile -->
+    <div
+      class="absolute top-4 bottom-4 w-0.5 bg-gradient-to-b from-emerald-400 via-teal-500/50 to-slate-300 dark:to-white/10 left-6 md:left-1/2 -translate-x-1/2"
+    ></div>
+
+    <!-- Timeline Nodes -->
+    <div class="space-y-8 sm:space-y-12">
+      <div
+        v-for="(item, index) in workExperience"
+        :key="item.company"
+        class="relative flex flex-col md:flex-row items-start group"
+        :class="index % 2 === 0 ? 'md:flex-row-reverse' : ''"
+        data-aos="fade-up"
+        :data-aos-delay="index * 100"
+        data-aos-duration="600"
+      >
+        <!-- Timeline Node Circle -->
+        <div
+          class="absolute left-6 md:left-1/2 -translate-x-1/2 w-7 h-7 rounded-full bg-slate-50 dark:bg-[#07080c] border-2 flex items-center justify-center z-20 shadow-md group-hover:scale-125 transition-transform duration-300"
+          :class="
+            item.isCurrent
+              ? 'border-emerald-400 shadow-emerald-500/40'
+              : 'border-slate-300 dark:border-white/20 group-hover:border-emerald-400'
+          "
+        >
+          <span
+            class="w-2.5 h-2.5 rounded-full"
+            :class="
+              item.isCurrent
+                ? 'bg-emerald-400 animate-pulse'
+                : 'bg-slate-400 dark:bg-white/40 group-hover:bg-emerald-400'
+            "
+          ></span>
+        </div>
+
+        <!-- Content Card: Full width on mobile, half on desktop -->
+        <div
+          class="pl-14 md:pl-0 w-full md:w-1/2"
+          :class="
+            index % 2 === 0 ? 'md:pr-10 md:text-right' : 'md:pl-10 md:text-left'
+          "
+        >
+          <div
+            class="luxury-card p-5 sm:p-6 group-hover:border-emerald-400/40 transition-all duration-300"
+          >
+            <!-- Period Badge -->
+            <div
+              class="flex items-center gap-2 mb-2"
+              :class="index % 2 === 0 ? 'md:justify-end' : 'md:justify-start'"
+            >
+              <span
+                class="inline-flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full"
+                :class="
+                  item.isCurrent
+                    ? 'bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 border border-emerald-500/30'
+                    : 'bg-slate-100 dark:bg-white/[0.05] text-slate-500 dark:text-slate-400 border border-slate-200/60 dark:border-white/10'
+                "
+              >
+                <span
+                  v-if="item.isCurrent"
+                  class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping"
+                ></span>
+                {{ item.period }}
+              </span>
+            </div>
+
+            <!-- Role & Company -->
+            <h3
+              class="text-base sm:text-lg font-bold text-slate-900 dark:text-white group-hover:text-emerald-500 dark:group-hover:text-emerald-400 transition-colors"
+            >
+              {{ item.role }}
+            </h3>
+            <div
+              class="text-xs sm:text-sm font-semibold text-emerald-600 dark:text-emerald-300/90 mb-2"
+            >
+              {{ item.company }}
+            </div>
+
+            <!-- Narrative -->
+            <p
+              class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 leading-relaxed font-normal"
+            >
+              {{ item.description }}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
+
+<script setup lang="ts">
+const workExperience = [
+  {
+    role: "Content Specialist",
+    company: "Upperhand Creatives",
+    period: "09/2024 – Present",
+    isCurrent: true,
+    description:
+      "Directing multi-channel creative campaigns, high-converting digital visual architecture, and editorial brand assets for enterprise clients.",
+  },
+  {
+    role: "Social Media Specialist / Web Developer",
+    company: "Certified Roofing",
+    period: "05/2023 – 07/2024",
+    isCurrent: false,
+    description:
+      "Managed and developed core web platforms while orchestrating high-engagement social media campaigns, brand assets, and digital growth.",
+  },
+  {
+    role: "Video Editor / Graphic Designer",
+    company: "Pentwater Connect",
+    period: "06/2022 – 04/2023",
+    isCurrent: false,
+    description:
+      "Produced commercial video edits, bespoke marketing collateral, investor pitch decks, corporate brand stylebooks, and visual presentation systems.",
+  },
+  {
+    role: "Graphic Designer",
+    company: "ER Design",
+    period: "01/2020 – 02/2021",
+    isCurrent: false,
+    description:
+      "Delivered identity concepts, luxury packaging prototypes, commercial print layouts, and digital illustrations for commercial brands.",
+  },
+];
+</script>
+
+<style scoped></style>

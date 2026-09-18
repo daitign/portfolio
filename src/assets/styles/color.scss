@@ -1,12 +1,28 @@
 :root {
-  --dark-mode: #27173a;
-  --gray: #737278;
-  --light-gray: #f3f4f6;
-  --lighter-gray: #f1f5f8;
-  --black: #26252a;
-  --white: #fff;
-  --blue: #2563eb;
-  --dark-blue: #1e40af;
-  --light-blue: #60a5fa;
-  --spruce: #2C3E4C
+  --dark-mode: #060908;
+  --gray: #94a3b8;
+  --light-gray: #f8fafc;
+  --lighter-gray: #f1f5f9;
+  --black: #060908;
+  --white: #ffffff;
+  --blue: #10b981;
+  --dark-blue: #047857;
+  --light-blue: #34d399;
+  --spruce: #111d17;
+
+  /* Luxury Green & White Theme Accents */
+  --emerald: #10b981;
+  --emerald-mint: #34d399;
+  --emerald-dark: #059669;
+  --emerald-deep: #047857;
+  --emerald-glow: rgba(16, 185, 129, 0.35);
+  --obsidian: #060908;
+  --obsidian-surface: #0a110d;
+  --obsidian-card: rgba(10, 17, 13, 0.8);
+  --glass-border: rgba(255, 255, 255, 0.09);
+  --glass-border-hover: rgba(16, 185, 129, 0.45);
+  --glass-border-light: rgba(15, 23, 42, 0.08);
+
+  --primary: #10b981;
 }
+
