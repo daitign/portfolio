@@ -127,7 +127,17 @@ onMounted(() => {
   display: flex;
   flex-direction: column;
   align-items: center;
-  row-gap: 28px;
+  row-gap: 20px;
+  transform: scale(0.62);
+  transform-origin: center center;
+  transition: transform 0.3s ease;
+}
+
+@media (min-width: 640px) {
+  .ui-abstergo {
+    transform: scale(0.74);
+    row-gap: 24px;
+  }
 }
 
 .ui-brand {
