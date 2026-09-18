@@ -443,6 +443,7 @@
           @click="closeTheater"
         >
           <div
+            ref="theaterModalRef"
             class="theater-modal relative w-full max-w-[420px] aspect-[9/16] bg-black rounded-3xl overflow-hidden shadow-2xl shadow-emerald-500/15 border border-emerald-500/30 flex flex-col"
             @click.stop
           >
@@ -465,6 +466,7 @@
               <iframe
                 :src="theaterItem.embedUrl"
                 class="video-cropped-iframe"
+                :style="theaterIframeStyle"
                 scrolling="no"
                 allow="autoplay; encrypted-media; fullscreen; picture-in-picture"
                 allowfullscreen
@@ -479,7 +481,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, onMounted, onUnmounted } from "vue";
+import { ref, computed, onMounted, onUnmounted, nextTick } from "vue";
 import { Swiper, SwiperSlide } from "swiper/vue";
 import { Pagination } from "swiper";
 import TechIcon from "@/components/TechIcon.vue";
@@ -634,6 +636,45 @@ const isDragging = ref(false);
 const isPlayingReel = ref(false);
 const isTheaterOpen = ref(false);
 const theaterItem = ref<any>(null);
+const theaterModalRef = ref<HTMLElement | null>(null);
+const theaterModalWidth = ref(420);
+
+const updateTheaterModalWidth = () => {
+  if (theaterModalRef.value && theaterModalRef.value.clientWidth > 0) {
+    theaterModalWidth.value = theaterModalRef.value.clientWidth;
+    return;
+  }
+  if (typeof window !== "undefined") {
+    theaterModalWidth.value = Math.min(420, window.innerWidth - 32);
+  }
+};
+
+const theaterIframeStyle = computed(() => {
+  // Google Drive's embedded player checks viewport/iframe width:
+  // At < 480px it enables bloated mobile touch controls (giant pause button in center,
+  // floating thick scrubber cutting across text, cut-off bottom bar).
+  // At >= 600px, it switches to its sleek desktop layout with a razor-thin scrubber bar
+  // pinned at the bottom and a single row of compact controls.
+  const virtualWidth = 600;
+  // 600 * 16 / 9 = 1066.67px. Google Drive title bar at 600px width is 48px.
+  // Virtual height = 1067 + 48 = 1115px.
+  const virtualHeight = 1115;
+  const topCrop = 48;
+
+  const currentWidth = theaterModalWidth.value || 420;
+  const scale = currentWidth / virtualWidth;
+
+  return {
+    position: "absolute" as const,
+    top: `${-topCrop * scale}px`,
+    left: "0px",
+    width: `${virtualWidth}px`,
+    height: `${virtualHeight}px`,
+    transform: `scale(${scale})`,
+    transformOrigin: "top left",
+    border: "0",
+  };
+});
 
 const activeReel = computed(() => {
   const norm = ((activeSlot.value % 3) + 3) % 3;
@@ -643,6 +684,10 @@ const activeReel = computed(() => {
 const openTheater = (item: any) => {
   theaterItem.value = item;
   isTheaterOpen.value = true;
+  updateTheaterModalWidth();
+  nextTick(() => {
+    updateTheaterModalWidth();
+  });
 };
 
 const closeTheater = () => {
@@ -674,14 +719,20 @@ const updateCylinderRadius = () => {
   }
 };
 
+const onResize = () => {
+  updateCylinderRadius();
+  updateTheaterModalWidth();
+};
+
 onMounted(() => {
   updateCylinderRadius();
-  window.addEventListener("resize", updateCylinderRadius);
+  updateTheaterModalWidth();
+  window.addEventListener("resize", onResize);
   window.addEventListener("keydown", handleKeyDown);
 });
 
 onUnmounted(() => {
-  window.removeEventListener("resize", updateCylinderRadius);
+  window.removeEventListener("resize", onResize);
   window.removeEventListener("keydown", handleKeyDown);
 });
 
@@ -951,14 +1002,9 @@ const currentProjects = computed(() => {
   border: 0;
 }
 
-/* Theater modal iframe: cover full 9:16 bounds with zero top bar and zero bottom space */
+/* Theater modal iframe: styled dynamically via :style="theaterIframeStyle" to enforce sleek desktop player controls */
 .theater-modal .video-cropped-iframe {
   position: absolute;
-  top: -46px;
-  left: -5%;
-  width: 110%;
-  height: calc(100% + 56px);
-  transform: none;
   border: 0;
 }
 
