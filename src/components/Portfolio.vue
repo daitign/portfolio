@@ -182,12 +182,11 @@
                 </div>
               </template>
 
-              <!-- First Frame Thumbnail Poster & Clean Play Trigger (Default Preview) -->
+              <!-- First Frame Thumbnail Poster (Default Clean Preview) -->
               <div
                 v-else
                 class="relative w-full h-full flex flex-col justify-between p-3 sm:p-5 bg-cover bg-center cursor-pointer group/card"
                 :style="{ backgroundImage: `url(${item.thumb})` }"
-                @click.stop="startInlinePlayback()"
               >
                 <!-- Subtle Cinematic Gradient Overlay -->
                 <div
@@ -209,23 +208,6 @@
                     />
                   </button>
                 </div>
-
-                <!-- Glowing Center Play Trigger -->
-                <div
-                  class="relative z-10 flex items-center justify-center my-auto group/play"
-                >
-                  <div
-                    class="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-emerald-400 text-black flex items-center justify-center shadow-2xl shadow-emerald-400/50 transform group-hover/card:scale-110 transition-transform duration-300"
-                  >
-                    <font-awesome-icon
-                      :icon="['fas', 'play']"
-                      class="text-sm sm:text-xl ml-0.5"
-                    />
-                  </div>
-                </div>
-
-                <!-- Bottom Spacer for dead-center balance -->
-                <div class="h-7 sm:h-8 pointer-events-none"></div>
               </div>
             </div>
           </div>
@@ -777,7 +759,7 @@ const startInlinePlayback = (_item?: any) => {
 };
 
 const handleCardClick = (idx: number) => {
-  if (isDragging.value) return;
+  if (hasDragged || isDragging.value) return;
   if (isCardActive(idx)) {
     startInlinePlayback(activeReel.value);
   } else {
@@ -798,9 +780,11 @@ const stopReelPlayback = () => {
 // Pointer & Touch Drag Handlers
 let startX = 0;
 let dragStartRotation = 0;
+let hasDragged = false;
 
 const onDragStart = (e: MouseEvent | TouchEvent) => {
   isDragging.value = true;
+  hasDragged = false;
   startX = "touches" in e ? e.touches[0].pageX : e.pageX;
   dragStartRotation = carouselRotation.value;
 };
@@ -809,6 +793,9 @@ const onDragMove = (e: MouseEvent | TouchEvent) => {
   if (!isDragging.value) return;
   const currentX = "touches" in e ? e.touches[0].pageX : e.pageX;
   const deltaX = currentX - startX;
+  if (Math.abs(deltaX) > 6) {
+    hasDragged = true;
+  }
   carouselRotation.value = dragStartRotation + deltaX * 0.28;
 };
 
@@ -818,6 +805,11 @@ const onDragEnd = () => {
   const targetSlot = Math.round(-carouselRotation.value / angleStep);
   activeSlot.value = targetSlot;
   carouselRotation.value = -targetSlot * angleStep;
+  if (hasDragged) {
+    setTimeout(() => {
+      hasDragged = false;
+    }, 150);
+  }
 };
 
 const videoProjects = [
@@ -954,10 +946,10 @@ const currentProjects = computed(() => {
 }
 
 .carousel-card.is-active {
-  border-color: rgba(52, 211, 153, 0.85);
-  box-shadow: 0 25px 60px -10px rgba(0, 0, 0, 0.95),
-    0 0 30px -5px rgba(16, 185, 129, 0.45), 0 0 0 1px rgba(16, 185, 129, 0.6);
-  filter: brightness(1.06) contrast(1.02);
+  border-color: rgba(16, 185, 129, 0.28);
+  box-shadow: 0 20px 45px -10px rgba(0, 0, 0, 0.9),
+    0 0 28px rgba(16, 185, 129, 0.22);
+  filter: brightness(1.05) contrast(1.02);
   opacity: 1;
   z-index: 50;
 }
@@ -973,9 +965,9 @@ const currentProjects = computed(() => {
 }
 
 .carousel-card.is-playing {
-  border-color: rgba(52, 211, 153, 0.95);
-  box-shadow: 0 25px 60px -10px rgba(0, 0, 0, 0.95),
-    0 0 35px -5px rgba(16, 185, 129, 0.5), 0 0 0 1px rgba(16, 185, 129, 0.7);
+  border-color: rgba(16, 185, 129, 0.35);
+  box-shadow: 0 25px 55px -10px rgba(0, 0, 0, 0.95),
+    0 0 32px rgba(16, 185, 129, 0.28);
   z-index: 60;
 }
 
