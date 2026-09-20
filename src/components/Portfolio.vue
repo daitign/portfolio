@@ -573,18 +573,23 @@ const showcaseReels: ShowcaseReel[] = [
   },
   {
     id: 2,
-    title: "High-Retention Brand & Commercial Shoot",
-    subtitle: "Talent Direction, Studio Lighting & Cinematic Color Science",
-    category: "Fashion & Lifestyle",
-    badge: "4K UHD",
-    duration: "0:45",
+    title: "Julius Caesar & The Fall of Rome",
+    subtitle: "Historical Narrative, 3D Motion Graphics & Kinetic Typography",
+    category: "Historical & Motion Graphics",
+    badge: "1080p 9:16",
+    duration: "0:16",
     tech: "After Effects",
     thumb: reel2Thumb,
     driveUrl:
-      "https://drive.google.com/file/d/1YLNH79I6sANsnKQAKJCOh2fKslHvZAkY/view",
+      "https://drive.google.com/file/d/18LvaJ2Lb1_IrSQmy6jPH3Yh3Yh5JhgyC/view?t=6.035",
     embedUrl:
-      "https://drive.google.com/file/d/1YLNH79I6sANsnKQAKJCOh2fKslHvZAkY/preview",
-    tags: ["After Effects", "Studio Lighting", "Color Science", "Pacing"],
+      "https://drive.google.com/file/d/18LvaJ2Lb1_IrSQmy6jPH3Yh3Yh5JhgyC/preview",
+    tags: [
+      "After Effects",
+      "3D Compositing",
+      "Historical Narrative",
+      "Kinetic Typography",
+    ],
   },
   {
     id: 3,
