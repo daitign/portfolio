@@ -79,7 +79,7 @@ const currentYear = ref(new Date().getFullYear());
 const socialLinks = [
   {
     name: "Instagram",
-    url: "https://instagram.com/daitignz",
+    url: "https://instagram.com/iamdaitign",
     icon: "instagram",
   },
   {
