@@ -593,18 +593,24 @@ const showcaseReels: ShowcaseReel[] = [
   },
   {
     id: 3,
-    title: "Viral Short-Form & Narrative Look Dev",
-    subtitle: "Hook-Driven TikTok, IG Reels & Kinetic Typography",
-    category: "Short-Form Creative",
+    title: "VFX Breakdown & Multi-Track Composite",
+    subtitle:
+      "Green Screen Chroma Key, 3D Anatomical VFX & Premiere Pro Timeline",
+    category: "VFX & Post-Production",
     badge: "1080p 9:16",
-    duration: "0:28",
-    tech: "CapCut & DaVinci",
+    duration: "0:54",
+    tech: "Premiere Pro",
     thumb: reel3Thumb,
     driveUrl:
-      "https://drive.google.com/drive/folders/1qhNWddFhGx-YepHr-gypIy7gDWXgm6Mp",
+      "https://drive.google.com/file/d/1hcVYxENEZ2_SzLkQJXKGkLG4p2aMbKbu/view?t=3.873",
     embedUrl:
-      "https://drive.google.com/file/d/1YLNH79I6sANsnKQAKJCOh2fKslHvZAkY/preview",
-    tags: ["CapCut", "Kinetic Typography", "Mobile 9:16", "Sound Synthesis"],
+      "https://drive.google.com/file/d/1hcVYxENEZ2_SzLkQJXKGkLG4p2aMbKbu/preview",
+    tags: [
+      "Premiere Pro",
+      "Chroma Keying",
+      "VFX Compositing",
+      "Timeline Breakdown",
+    ],
   },
 ];
 
